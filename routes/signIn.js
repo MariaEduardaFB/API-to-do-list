@@ -21,7 +21,7 @@ router.post('/signin', async (req, res) => {
 
         const token = jwt.sign({userId: user._id}, process.env.SECRET_KEY)
 
-        res.status(200).json({token})
+        res.status(200).json({token, userId: user._id})
     }catch(error){
         res.status(500).json({message:'Error trying to sign in'})
     }

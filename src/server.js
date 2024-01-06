@@ -5,6 +5,7 @@ const { connectToMongoDB } = require('./database');
 const authRoutes = require('../middleware/auth')
 const signupRoutes = require('../routes/signUp')
 const signinRoutes = require('../routes/signIn')
+const taskRoutes = require('../routes/task')
 
 const app = express()
 
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 app.use('/signup', signupRoutes)
 app.use('/signin', signinRoutes)
 app.use('/auth', authRoutes)
+app.use('/api', taskRoutes)
 
 mongoose
   .connect(process.env.MONGODB_URI)
